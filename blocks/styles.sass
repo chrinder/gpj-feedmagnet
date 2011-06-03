@@ -1,0 +1,456 @@
+
+$col: 90px
+$pad: 10px
+
+$col2: ($col * 2) + $pad
+$col3: ($col * 3) + ($pad * 2)
+$col4: ($col * 4) + ($pad * 3)
+$col5: ($col * 5) + ($pad * 4)
+$col6: ($col * 6) + ($pad * 5)
+
+$green: #9EC305
+$lt_blue: #75DDFF
+$blue: #3CAED4
+$dk_blue: #00647c
+$background: #BCC4C4
+$gowalla: #ff9300
+
+$img: "http://c2869822.cdn.cloudfiles.rackspacecloud.com/"
+
+@mixin box-shadow($vars)
+    box-shadow: $vars
+    -moz-box-shadow: $vars
+    -webkit-box-shadow: $vars
+    
+*
+    box-sizing: border-box
+    -moz-box-sizing: border-box
+    -ms-box-sizing: border-box
+    -webkit-box-sizing: border-box
+
+body
+    background: $background
+    color: white
+    margin: 0
+    font-family: "Helvetica Neue", helvetica, arial, sans-serif
+    word-wrap: break-word
+    padding-top: 160px
+
+.float-center
+    margin: 0 auto
+    width: 100%
+    padding: 20px
+
+header
+    height: 140px
+    position: fixed
+    z-index: 100
+    top: 0
+    left: 0
+    width: 100%
+    background: black
+    border: 5px solid white
+    padding: 3px
+    @include box-shadow(0 0 10px rgba(0, 0, 0, .4))
+
+#header
+    border: 1px solid white
+    height: 124px
+    
+    h1
+        text-transform: uppercase
+        font-weight: normal
+        font-size: 40px
+        margin: 0
+        float: left
+        border-right: 1px solid #555
+        padding-right: 20px
+    
+    h2
+        font-weight: normal
+        float: left
+        margin: 0
+        font-size: 18px
+        width: 280px
+        padding: 2px 0 0 10px
+        
+        .color
+            color: $lt_blue
+            font-weight: normal
+    
+    .info
+        float: right
+        text-align: right
+        padding: 2px 15px 0 0
+        font-size: 18px
+        color: $green
+
+#feedmagnet
+    float: left
+    width: 100%
+    padding-top: 18px
+    
+    p, img
+        float: left
+    
+    p
+        color: #ccc
+        margin: 0 6px 0 0
+        
+    img
+        height: 20px
+        margin: 0 7px -4px 0
+    
+    img.inactive
+        opacity: .3
+    
+    img.logo
+        height: 18px
+        padding-right: 12px
+        margin-right: 12px
+        border-right: 1px solid #555
+
+#bottom-padding
+    height: 20px
+    width: 100%
+
+#fm-output
+
+    .block
+        margin-bottom: 10px
+        float: left
+        position: relative
+    
+    .update
+        @include box-shadow(0 0 10px rgba(0, 0, 0, .4))
+        background: black
+        color: white
+        border: 5px solid white
+        padding: 10px
+        margin-left: 10px
+    
+    .corner
+        height: 70px
+        background: $blue
+        width: 70px
+        position: absolute
+        bottom: 0
+        right: 0
+        border-left: 1px solid rgba(255, 255, 255, .6)
+        
+        .shadow
+            background: url(img/corner-gray.png)
+            width: 80px
+            height: 80px
+            position: absolute
+            bottom: -10px
+            right: -10px
+        
+        .channel
+            position: absolute
+            top: 8px
+            left: 8px
+            width: 28px
+
+    
+    .corner.gowalla
+        background: $gowalla
+    
+    .corner.facebook
+        background: $dk_blue
+
+    .corner.twitter
+        background: $green
+        
+    .checkin
+
+        .update
+            width: $col
+            position: relative
+            color: white
+            padding: 5px
+
+        .avatar
+            position: absolute
+            top: 0
+            left: 0
+
+            img
+                width: 80px
+        
+        .name
+            padding: 80px 0 20px 0
+            color: $green
+
+        .info
+            font-size: 11px
+            position: absolute
+            left: 5px
+            bottom: 5px
+
+        .channel
+            width: 22px
+            position: absolute
+            right: 1px
+            bottom: 1px
+    
+    .big-checkin
+    
+        .update
+            width: $col4
+            height: 110px
+            position: relative
+                    
+        .avatar
+            position: absolute
+            top: 0
+            left: 0
+            
+            img
+                height: 100px
+        
+        .content
+            padding-left: 100px
+            font-size: 18px
+            
+            p
+                margin: 0
+            
+            .name
+                color: $green
+            
+            .comment
+                color: $lt_blue
+        
+        .info
+            font-size: 12px
+            position: absolute
+            bottom: 5px
+            right: 5px
+        
+        .channel
+            width: 22px
+        
+        .channel.gowalla
+            margin-bottom: -6px
+            
+        .channel.foursquare
+            margin-bottom: -2px
+
+    .blurb, .big-blurb, .super-blurb
+        .update
+            background: $blue
+            color: black
+            
+    .super-blurb .update
+        width: $col4
+    
+    .blurb .update
+        width: $col2
+
+    .blurb, .super-blurb
+        
+        .avatar
+            float: right
+            margin: -10px -10px 10px 10px
+
+            img
+                width: 48px
+                height: 48px
+            
+        .text
+            line-height: 130%
+            font-size: 18px
+            margin-top: 0
+        
+        .info
+            font-size: 12px
+            margin: 0 0 -5px 0
+            
+        .from
+            margin: 0
+
+    .big-blurb .update
+        width: $col4
+        position: relative
+        
+        .avatar
+            position: absolute
+            top: 0
+            right: 0
+
+            img
+                width: 48px
+                height: 48px
+        
+        .content
+            padding-right: 64px
+            
+        .text
+            font-size: 30px
+            font-weight: 100
+            margin-top: 0
+            margin-bottom: 40px
+        
+        .from
+            position: absolute
+            bottom: 20px
+            left: 10px
+            margin-bottom: 0
+        
+        .info
+            position: absolute
+            bottom: 6px
+            left: 10px
+            font-size: 12px
+            margin-bottom: 0
+    
+    .photo .update
+        width: $col4
+        padding: 0
+        position: relative
+        
+        .channel
+            position: absolute
+            bottom: 10px
+            right: 10px
+            opacity: .4
+            
+        .credits
+            padding: 10px
+        
+        .content
+            float: left
+            width: 100%
+            color: $blue
+            font-size: 24px
+            margin: 0 0 15px 0
+        
+        .avatar
+            float: left
+            margin-right: 10px
+            width: 48px
+            height: 48px
+        
+        .from
+            font-size: 18px
+            color: $green
+            margin: 0
+
+        .info
+            font-size: 12px
+            margin: 0 0 15px 0
+    
+    .video .update
+        padding: 0
+        width: $col4
+        
+        span.embed
+            margin-bottom: -3px
+
+@media screen and (max-width: 1150px)
+    header
+        height: 185px
+    
+    #header
+        height: 169px
+        
+        .info
+            float: left
+            text-align: left
+            clear: both
+        
+    body
+        padding-top: 200px
+
+
+@media screen and (max-width: 820px)
+    header
+        height: 220px
+        position: absolute
+
+    #header
+        height: 204px
+        
+        h1
+            border-right: none
+        h2
+            padding-left: 0
+            width: 100%
+
+        .info
+            float: left
+            text-align: left
+            clear: both
+
+    body
+        padding-top: 240px
+
+
+@media screen and (max-width: 700px)
+
+    #header
+        h1
+            font-size: 30px
+        h2
+            font-size: 14px
+        .info
+            margin-top: 8px
+            font-size: 14px
+        
+    img.logo
+        border-right: none !important
+        margin-right: 0 !important
+        padding-right: 0 !important
+
+    #icons
+        float: left
+        margin-top: 10px
+        clear: both
+
+
+$col: 70px
+$pad: 8px
+$col2: ($col * 2) + $pad
+$col4: ($col * 4) + ($pad * 3)
+@media screen and (max-width: 450px)
+
+    header
+        height: 240px
+
+    #header
+        height: 224px
+        
+        h1
+            font-size: 20px
+    
+        .info
+            float: left
+            text-align: left
+            clear: both
+            
+        #icons img 
+            height: 15px !important
+        
+    
+    body
+        padding-top: 255px
+        
+    #fm-output
+        padding: 0
+        
+        .big-checkin, .photo, .video, .big-blurb, .blurb
+            .update
+                width: $col4
+        
+        .checkin .update
+            width: $col2
+            
+            .avatar img
+                width: 138px
+            
+            .name
+                padding-top: 145px
+        
+        .featured-photo
+            width: $col4 - 10px

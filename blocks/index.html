@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Blocks - Sample FeedMagnet Implementation</title>
+    <link rel="stylesheet" href="styles.css" />
+    
+    <!-- This example uses the jQuery Masonry plugin, so we have to load jQuery and Masonry -->
+    <!-- In most other cases, you don't have to load jQuery like this since FeedMagnet loads it automatically -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.masonry.min.js"></script>
+    
+    <!-- Load the custom JavaScript for Blocks and a template function to convert json to HTML -->
+    <script type="text/javascript" src="js/blocks.js"></script>
+    <script type="text/javascript" src="js/template.js"></script>
+    <script type="text/javascript">
+
+        // the address to your FeedMagnet server should go here
+        var server = 'my.feedmagnet.com';
+
+        // load FeedMagnet
+        var ready = function(fx) {
+            if (typeof $FM !== 'undefined' && typeof $FM.ready === 'function') { $FM.ready(fx); }
+            else { window.setTimeout(function() { ready.call(null, fx); }, 50); }
+        };
+        var fmjs = document.createElement('script');
+        fmjs.src = ('https:' === document.location.protocol ? 'https://' : 'http://') + server + '/embed.js';
+        fmjs.setAttribute('async', 'true'); document.documentElement.firstChild.appendChild(fmjs);
+        ready(function($, _) {
+        
+            // pass settings into blocks.js and kick everything off
+            blocks($, _, {
+                'output': '#fm-output',
+                'jsonToHTML': jsonToHTML,
+                'animateSpeed': 1,          // time to wait between showing updates (in seconds)
+                'feeds': 'feedmagnet',           // a single group or a list, like this: ['group-a', 'group-b']
+                'pollWait': 5,              // how often to check for new content (in seconds)
+            });
+            
+        });
+                
+    </script>
+
+</head>
+<body>
+    <header>
+        <div id="header">
+            <div class="float-center">
+                <h1>Social Feed</h1>
+                <h2>Pulling in awesome content from <span class="color">#hashtags</span> and stuff.</h2>
+                <div class="info">
+                    Something else can go over here
+                </div>
+                <div id="feedmagnet">
+                    <p class="powered">screen powered by</p>
+                    <img class="logo" src="img/feedmagnet.png" alt="FeedMagnet" />
+                    <div id="icons">
+                        <img src="img/twitter.png" alt="Twitter" />
+                        <img src="img/facebook.png" alt="Facebook" />
+                        <img class="inactive" src="img/flickr.png" alt="Flickr" />
+                        <img class="inactive" src="img/youtube.png" alt="YouTube" />
+                        <img class="inactive" src="img/vimeo.png" alt="Vimeo" />
+                        <img src="img/foursquare.png" alt="Foursquare" />
+                        <img src="img/gowalla.png" alt="Gowalla" />
+                        <img class="inactive" src="img/google-buzz.png" alt="Google Buzz" />
+                        <img class="inactive" src="img/tumblr.png" alt="Tumblr" />
+                        <img class="inactive" src="img/delicious.png" alt="Delicious" />
+                        <img class="inactive" src="img/rss.png" alt="RSS" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="fm-output" class="float-center"></div>
+    <div id="bottom-padding"></div>
+</body>
+</html>
