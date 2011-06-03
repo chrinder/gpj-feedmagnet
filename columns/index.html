@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Columns - Sample FeedMagnet Implementation</title>
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Load the custom JavaScript for Blocks and a template function to convert json to HTML -->
+    <script type="text/javascript" src="js/template.js"></script>
+    <script type="text/javascript" src="js/columns.js"></script>
+    
+    <!-- We load FeedMagnet and pass settings into Columns here from the HTML file -->
+    <!-- This means we shouldn't ever have to edit columns.js to customize a specific project -->
+    <script type="text/javascript">
+        
+        // the address to your FeedMagnet server should go here
+        var server = 'my.feedmagnet.com';
+        
+        // load FeedMagnet
+        var ready = function(fx) {
+            if (typeof $FM !== 'undefined' && typeof $FM.ready === 'function') { $FM.ready(fx); }
+            else { window.setTimeout(function() { ready.call(null, fx); }, 50); }
+        };
+        var fmjs = document.createElement('script');
+        fmjs.src = ('https:' === document.location.protocol ? 'https://' : 'http://') + server + '/embed.js';
+        fmjs.setAttribute('async', 'true'); document.documentElement.firstChild.appendChild(fmjs);
+        ready(function($, _) {
+
+            // pass settings into columns.js and kick everything off
+            columns($, _, {
+                'animateSpeed': 3,             // time to wait between showing updates (in seconds)
+                'jsonToHTML': jsonToHTML,       // a function that receives a json update and returns HTML
+                //'banners': [{                 // an optional list of images to float in as ad banners
+                //    'image': 'banner.jpg',
+                //    'frequency': 2            // how often should the image appear (in minutes)
+                //}],
+                'feeds': [{                     // list of feeds to pull in from FeedMagnet
+                    'groups': 'feedmagnet',     // groups - can also be a list: ['group1', 'group2']
+                    'looping': true,            // if true, will use old updates if nothings is new (default: false)
+                    'pollLimit': 10,            // number of updates to get initially
+                    'pollWait': 30              // how often to check for new content (in seconds)
+                }, {
+                    'groups': 'manhattanhenge',
+                    'looping': true,
+                } ]
+            });
+            
+        });
+    </script>
+</head>
+<body>
+    <div id="fm-content-wrapper">
+        
+        <!-- all .fm-column elements will be used as output columns -->
+        <!-- .fm-top and .fm-bottom determine if new updates are added to the top or bottom of the div -->
+        <!-- the ID values here are just for CSS positioning -->
+        <div id="fm-col1" class="fm-column fm-top"></div>
+        <div id="fm-col2" class="fm-column fm-bottom"></div>
+        <div id="fm-col3" class="fm-column fm-top"></div>
+        <div id="fm-col4" class="fm-column fm-bottom"></div>
+        
+    </div>
+</body>
+</html>

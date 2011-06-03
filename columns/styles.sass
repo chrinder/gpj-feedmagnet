@@ -1,0 +1,178 @@
+
+// -------------------------------
+// general styles and page wrapper
+// -------------------------------
+
+*
+    box-sizing: border-box
+    -moz-box-sizing: border-box
+    -ms-box-sizing: border-box
+    -webkit-box-sizing: border-box
+
+html
+    background: black
+    color: white
+    overflow: hidden
+    
+body
+    margin: 0
+    overflow: hidden
+    font-size: 16px
+
+#fm-content-wrapper
+    position: absolute
+    top: 20px
+    bottom: 20px
+    left: 20px
+    right: 20px
+    overflow: hidden
+
+a
+    color: inherit
+    text-decoration: none
+
+
+// -------------------------------
+// columns and other layout stuff
+// -------------------------------
+
+.fm-column
+    border-right: 1px solid #777
+    position: absolute
+    top: 0
+    bottom: 0
+    
+#fm-col1
+    left: 0
+    right: 75%
+
+#fm-col2
+    left: 25%
+    right: 50%
+
+#fm-col3
+    left: 50%
+    right: 25%
+
+#fm-col4
+    left: 75%
+    right: 0
+    border-right: none
+        
+.fm-bottom .fm-holder
+    position: absolute
+    bottom: 0
+    width: 100%
+    overflow: hidden
+    margin-bottom: -1px
+
+.fm-hidden
+    visibility: hidden
+
+
+// -------------------------------
+// update boxes
+// -------------------------------
+
+.fm-update, fm-banner
+    overflow: hidden
+    position: relative
+    padding: 20px
+    float: left
+    width: 100%
+    overflow: hidden
+    word-wrap: break-word
+    font-family: Tahoma, "Lucida Grande", sans-serif
+    font-weight: 300
+    font-size: 24px
+    color: #ccc
+    
+.fm-bottom .fm-update
+    border-bottom: 1px solid #777
+    padding-bottom: 20px
+
+.fm-top
+    margin-top: -1px
+    .fm-update, .fm-banner
+        border-top: 1px solid #777
+        padding-top: 20px
+
+
+// -------------------------------------
+// formatting for different update types
+// -------------------------------------
+
+.fm-highlight
+    color: white
+    
+// checkins
+.fm-checkin
+    min-height: 115px
+    .fm-avatar
+        position: absolute
+        top: 20px
+        left: 20px
+        img
+            width: 100px
+    .fm-checkin .fm-text
+        font-style: italic
+    .fm-details
+        color: #666
+        font-size: 16px
+    .fm-content
+        padding-left: 115px
+
+// banners
+.fm-banner img
+    width: 100%
+
+// blurbs
+.fm-blurb
+    .fm-avatar
+        position: absolute
+        top: 20px
+        left: 20px
+        img
+            width: 48px
+    .fm-content
+        padding-left: 63px
+    .fm-details
+        font-size: 16px
+        margin-top: 15px
+        color: #666
+
+// hugeblurbs
+.fm-hugeblurb
+    .fm-content
+        font-size: 50px
+    .fm-avatar
+        float: left
+        margin: 15px 15px 0 0
+    .fm-info
+        float: left
+        margin-top: 20px
+        font-size: 16px
+
+    .fm-details
+        color: #666
+
+// photo and video
+.fm-photo
+    max-height: 500px
+    img
+        width: 100%
+    
+.fm-photo, .fm-video, .fm-banner
+    padding: 0 !important
+    overflow: hidden
+
+.fm-video
+    max-height: 240px
+
+// articles
+.fm-article
+    .fm-text
+        font-size: 35px
+    .fm-details
+        font-size: 16px
+        color: #666
